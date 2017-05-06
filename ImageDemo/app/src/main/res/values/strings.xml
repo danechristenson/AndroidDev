@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Image Demo</string>
     <string name="reset">Reset</string>
+    <string name="header">Oilers Vs Ducks Logo</string>
+    <string name="oilers">Oilers logo</string>
+    <string name="ducks">Ducks Logo</string>
 </resources>
