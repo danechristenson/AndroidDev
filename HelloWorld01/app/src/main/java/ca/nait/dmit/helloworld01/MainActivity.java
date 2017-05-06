@@ -1,11 +1,13 @@
 package ca.nait.dmit.helloworld01;
 
+import android.icu.text.MessageFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeGreeting(View view){
 
+        String username = userNameEditText.getText().toString();
+        String usernameString = username;
+        if (username.length() ==0){
+            usernameString = "World";
+        }
+        String greeting = "Hello, " + usernameString;
+        userNameTextView.setText(greeting);
+
+        Toast toast = Toast.makeText(this, greeting, Toast.LENGTH_LONG);
+        toast.show();
     }
 
 }
