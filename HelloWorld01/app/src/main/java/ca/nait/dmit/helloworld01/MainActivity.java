@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText userNameEditText;
     private TextView userNameTextView;
@@ -24,14 +24,15 @@ public class MainActivity extends AppCompatActivity {
         userNameTextView = (TextView) findViewById(R.id.usernameTextView);
         helloButton = (Button) findViewById(R.id.helloButton);
 
-        helloButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                //event handler code
-                changeGreeting(v);
-            }
-        });
+//        helloButton.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View v) {
+//                //event handler code
+//                changeGreeting(v);
+//            }
+//        });
+        helloButton.setOnClickListener(this);
     }
 
     public void changeGreeting(View view){
@@ -48,4 +49,8 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
