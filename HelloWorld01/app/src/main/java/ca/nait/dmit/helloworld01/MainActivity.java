@@ -23,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
         userNameEditText = (EditText) findViewById(R.id.usernameEditText);
         userNameTextView = (TextView) findViewById(R.id.usernameTextView);
         helloButton = (Button) findViewById(R.id.helloButton);
+
+        helloButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //event handler code
+                changeGreeting(v);
+            }
+        });
     }
 
     public void changeGreeting(View view){
