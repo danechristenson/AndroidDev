@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HelloWorld01</string>
+    <string name="name">Enter your name here: </string>
+    <string name="usernameEditTextValue">Your Name</string>
+    <string name="usernameEditTextView">Hello @string/username</string>
+    <string name="helloButtonValue">Hello</string>
+</resources>
