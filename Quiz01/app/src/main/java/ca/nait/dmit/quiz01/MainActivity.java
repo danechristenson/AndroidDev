@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public  String[] questions = {"What is the most used OS for mobile?", "Where is Alberta's capital city?",
+    protected  String[] questions = {"What is the most used OS for mobile?", "Where is Alberta's capital city?",
         "How much wood could a woodchuck chuck if a wood chuck could chuck wood?",
         "What is the answer to life and everything?"};
-    public String[] answers = {"Android", "Edmonton", "42 Cords", "42"};
-    public int i;
+    protected String[] answers = {"Android", "Edmonton", "42 Cords", "42"};
+    protected int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
