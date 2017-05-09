@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Quiz01</string>
+    <string name="Question">Question</string>
+    <string name="nextQuestion">Next Question</string>
+    <string name="showAnswer">Show Answer</string>
+</resources>
