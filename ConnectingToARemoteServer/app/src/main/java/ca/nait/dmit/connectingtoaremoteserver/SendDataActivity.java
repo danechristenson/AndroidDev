@@ -27,14 +27,14 @@ public class SendDataActivity extends AppCompatActivity {
     }
 
     public void viewJitters(View view){
-        Intent recieveDataIntent = new Intent(this, ReceiveDataActivity.class);
-        startActivity(recieveDataIntent);
+        Intent receiveDataIntent = new Intent(this, ReceiveDataActivity.class);
+        startActivity(receiveDataIntent);
     }
 
     public void setData(View view) {
         final TextView dataEditText = (TextView) findViewById(R.id.dataEditText);
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://www.youcode.ca/Jitter";
+        String url = "http://www.youcode.ca/JitterServlet";
 
         //Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -54,7 +54,7 @@ public class SendDataActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                    // return super.getParams();
                 Map<String, String> params = new HashMap<>();
-                params.put("DATA", dataEditText.toString());
+                params.put("DATA", dataEditText.getText().toString());
                 params.put("LOGIN_NAME", "Dane");
                 return params;
 
