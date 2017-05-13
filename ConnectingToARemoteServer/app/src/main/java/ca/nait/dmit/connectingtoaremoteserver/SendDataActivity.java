@@ -29,10 +29,6 @@ public class SendDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_data);
     }
 
-    public void viewJitters(View view){
-        Intent receiveDataIntent = new Intent(this, ReceiveDataActivity.class);
-        startActivity(receiveDataIntent);
-    }
 
     public void setData(View view) {
         final TextView dataEditText = (TextView) findViewById(R.id.dataEditText);
