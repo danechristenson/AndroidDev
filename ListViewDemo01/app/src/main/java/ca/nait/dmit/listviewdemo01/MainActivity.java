@@ -35,8 +35,6 @@ public class MainActivity extends ListActivity {
 
     ListAdapter provinceList = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, provinces);
     setListAdapter(provinceList);
-
-//  add toast to select item
     }
 
     @Override
