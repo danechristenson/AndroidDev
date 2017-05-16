@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,6 +47,22 @@ public class MainActivity extends AppCompatActivity {
             "Whitehorse"
     };
 
+    final ImageView[] flag = {
+            "images/alberta.png",
+            "images/bc.png",
+            "images/manitoba.png",
+            "images/new_brunswick",
+            "images/newfoundland_and_labrador.png",
+            "images/nwt.png",
+            "images/nova_scotia.png",
+            "images/nunavut.png",
+            "images/ontario.png",
+            "images/pei.png",
+            "images/saskachewan.png",
+            "images/quebec.png",
+            "images/yukon.png"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 provinceTextView.setText(provinces[position]);
                 TextView capitalCityTextView = (TextView) inflatedView.findViewById(R.id.capitalCityTextView);
                 capitalCityTextView.setText(capitalCities[position]);
+                ImageView provinceFlag = (ImageView) inflatedView.findViewById(R.id.imageView);
+                //provinceFlag.setImageResource(findViewById(flag[position]));
 
                 return inflatedView;
             }

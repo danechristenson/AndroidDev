@@ -15,11 +15,12 @@
         android:id="@+id/provinceNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"/>
+        android:gravity="right"/>
 
     <TextView
         android:id="@+id/capitalCityTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="right"/>
 
 </LinearLayout>
