@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Lab1</string>
+    <string name="sendDataButton">Review Movie</string>
+    <string name="category">Category</string>
+    <string name="nominee">Nominee</string>
+    <string name="review">Review</string>
+    <string name="film">Best Picture</string>
+    <string name="actor">Best Actor</string>
+    <string name="actress">Best Actress</string>
+    <string name="editing">Film Editing</string>
+    <string name="effects">Visual Effects</string>
+</resources>
