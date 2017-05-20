@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="background_color_options_values">
+        <item>#a30303</item>
+        <item>#028002</item>
+        <item>#3e68f1</item>
+        <item>#FFFFFF</item>
+        <item>#00ffe1</item>
+    </string-array>
+</resources>

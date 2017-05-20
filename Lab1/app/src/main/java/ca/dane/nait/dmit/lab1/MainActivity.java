@@ -129,7 +129,7 @@ protected String categoryRadioSelection = "";
                 startActivity(viewReviewsIntent);
                 return true;
             case R.id.preferences:
-                Intent viewPreferencesIntent = new Intent(this, Preferences.class);
+                Intent viewPreferencesIntent = new Intent(this, MainPreferenceActivity.class);
                 startActivity(viewPreferencesIntent);
                 return true;
             default:

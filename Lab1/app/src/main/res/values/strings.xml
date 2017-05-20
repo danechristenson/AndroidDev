@@ -9,4 +9,8 @@
     <string name="actress">Best Actress</string>
     <string name="editing">Film Editing</string>
     <string name="effects">Visual Effects</string>
+    <string name="name">Name</string>
+    <string name="url">URL</string>
+    <string name="password">Password</string>
+    <string name="background_color">Background Color</string>
 </resources>
