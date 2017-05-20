@@ -20,10 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String backgroundColorPref = prefs.getString("preference_background_color", "#FFFFFF");
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.content);
-        layout.setBackgroundColor(Color.parseColor(backgroundColorPref));
+        setBackgroundColor();
+
 
 
     }
@@ -37,8 +35,25 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+//        Intent prefsIntent = new Intent(this, PreferenceActivityMain.class);
+//        startActivity(prefsIntent);
+//        return true;
         Intent prefsIntent = new Intent(this, PreferenceActivityMain.class);
-        startActivity(prefsIntent);
+        startActivityForResult(prefsIntent, 0);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // write code to change the background color of view
+     setBackgroundColor();
+    }
+
+    protected void setBackgroundColor(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String backgroundColorPref = prefs.getString("preference_background_color", "#FFFFFF");
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.content);
+        layout.setBackgroundColor(Color.parseColor(backgroundColorPref));
     }
 }

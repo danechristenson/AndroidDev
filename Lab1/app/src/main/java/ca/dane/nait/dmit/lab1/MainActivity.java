@@ -1,7 +1,11 @@
 package ca.dane.nait.dmit.lab1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +35,14 @@ protected String categoryRadioSelection = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setBackgroundColor();
+    }
+
+    protected void setBackgroundColor(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String backgroundColorPref = prefs.getString("preference_background_color", "#FFFFFF");
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.maincontent);
+        layout.setBackgroundColor(Color.parseColor(backgroundColorPref));
     }
 
     public void setData(View view) {
@@ -76,6 +88,13 @@ protected String categoryRadioSelection = "";
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // write code to change the background color of view
+        setBackgroundColor();
     }
 
     public void categoryRadioClicked(View view){
@@ -130,10 +149,12 @@ protected String categoryRadioSelection = "";
                 return true;
             case R.id.preferences:
                 Intent viewPreferencesIntent = new Intent(this, MainPreferenceActivity.class);
-                startActivity(viewPreferencesIntent);
+                startActivityForResult(viewPreferencesIntent, 0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }

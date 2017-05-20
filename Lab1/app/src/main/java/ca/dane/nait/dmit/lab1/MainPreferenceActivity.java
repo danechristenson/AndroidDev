@@ -12,6 +12,7 @@ public class MainPreferenceActivity extends PreferenceActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TODO: (dane) replace with a fragment
         addPreferencesFromResource(R.xml.preference_settings);
     }
 }

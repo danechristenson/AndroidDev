@@ -9,7 +9,7 @@
         android:title="@string/name" />
     <EditTextPreference
         android:defaultValue="oscar275"
-        android:password="true";
+        android:password="true"
         android:key="preference_password"
         android:selectAllOnFocus="true"
         android:singleLine="true"
