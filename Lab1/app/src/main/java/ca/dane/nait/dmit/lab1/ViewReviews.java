@@ -23,10 +23,6 @@ public class ViewReviews extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_view_reviews);
-        Bundle extras = getIntent().getExtras();
-        if(extras !=null) {
-            categoryRadioSelection = extras.getString("radioValue");
-        }
 
         final TextView dataTextView = (TextView) findViewById(R.id.reviewsTextView);
 
@@ -54,5 +50,39 @@ public class ViewReviews extends ListActivity {
         });
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    public void categoryRadioClicked(View view){
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.actorRadio:
+                if(checked) {
+                    categoryRadioSelection = "actor";
+                    break;
+                }
+            case R.id.actressRadio:
+                if(checked) {
+
+                    categoryRadioSelection = "actress";
+                    break;
+                }
+            case R.id.editingRadio:
+                if(checked) {
+                    categoryRadioSelection = "editing";
+                    break;
+                }
+            case R.id.effectsRadio:
+                if(checked) {
+                    categoryRadioSelection = "effects";
+                    break;
+                }
+            case R.id.filmRadio:
+                if(checked) {
+                    categoryRadioSelection = "film";
+                    break;
+                }
+            default:
+                break;
+        }
     }
 }
