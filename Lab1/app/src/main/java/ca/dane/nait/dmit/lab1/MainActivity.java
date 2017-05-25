@@ -145,6 +145,7 @@ protected String categoryRadioSelection = "";
         switch(item.getItemId()) {
             case R.id.view_reviews:
                 Intent viewReviewsIntent = new Intent(this, ViewReviews.class);
+                viewReviewsIntent.putExtra("radioValue",categoryRadioSelection );
                 startActivity(viewReviewsIntent);
                 return true;
             case R.id.preferences:
@@ -155,6 +156,4 @@ protected String categoryRadioSelection = "";
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
