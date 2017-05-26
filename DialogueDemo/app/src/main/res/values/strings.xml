@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DialogueDemo</string>
+    <string name="showAlertDialog">Show Alert Dialog</string>
+    <string name="showProgressDialog">Show ProgressDialog</string>
+    <string name="showProgressDialogWithUpdate">Show Progress Dialog With Update</string>
+    <string name="showDatePickerDialog">Show DatePickerDialog</string>
+    <string name="showTimePickerDialog">Show TimePickerDialog</string>
+</resources>

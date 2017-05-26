@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.dane.nait.dmit.dialoguedemo.MainActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/showAlertDialogueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showAlertDialog"
+            android:text="@string/showAlertDialog"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/showProgressDialogueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showProgressDialog"
+            android:text="@string/showProgressDialog"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/showProgressDialogueUpdateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showProgressUpdateDialog"
+            android:text="@string/showProgressDialogWithUpdate"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/showDatePickerDialogueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showDatePickerDialog"
+            android:text="@string/showDatePickerDialog"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/showTimePickerDialogueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showTimePickerDialog"
+            android:text="@string/showTimePickerDialog"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
