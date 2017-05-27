@@ -1,15 +1,19 @@
 package ca.dane.nait.dmit.dialoguedemo;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import java.util.Calendar;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ProgressDialog mProgressDialog;
     private int mCurrentProgress = 0;
@@ -99,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View view){
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.listener = this;
+        fragment.show(getFragmentManager(), "datePicker");
 
     }
 
@@ -106,4 +113,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        //change the text of the button to show the selected date
+        final Button datePickerButton = (Button) findViewById(R.id.showDatePickerDialogButton);
+        final Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.set(Calendar.YEAR, year);
+        currentCalendar.set(Calendar.MONTH, month);
+        currentCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String buttonText = String.format("%1$tb %1$te %1$tY", currentCalendar); //date formatting
+        datePickerButton.setText(buttonText);
+    }
 }

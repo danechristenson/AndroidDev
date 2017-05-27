@@ -19,7 +19,7 @@
         android:layout_marginTop="8dp">
 
         <Button
-            android:id="@+id/showAlertDialogueButton"
+            android:id="@+id/showAlertDialogButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showAlertDialog"
@@ -27,7 +27,7 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/showProgressDialogueButton"
+            android:id="@+id/showProgressDialogButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showProgressDialog"
@@ -35,7 +35,7 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/showProgressDialogueUpdateButton"
+            android:id="@+id/showProgressDialogUpdateButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showProgressUpdateDialog"
@@ -43,7 +43,7 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/showDatePickerDialogueButton"
+            android:id="@+id/showDatePickerDialogButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showDatePickerDialog"
@@ -51,7 +51,7 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/showTimePickerDialogueButton"
+            android:id="@+id/showTimePickerDialoeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showTimePickerDialog"
