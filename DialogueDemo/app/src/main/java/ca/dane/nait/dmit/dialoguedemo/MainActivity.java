@@ -2,6 +2,7 @@ package ca.dane.nait.dmit.dialoguedemo;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import java.util.Calendar;
 import android.os.CountDownTimer;
@@ -11,10 +12,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     private ProgressDialog mProgressDialog;
     private int mCurrentProgress = 0;
 
@@ -110,7 +111,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     public void showTimePickerDialog(View view){
-
+        TimePickerFragment fragment = new TimePickerFragment();
+        fragment.listener = this;
+        fragment.show(getFragmentManager(), "timePicker");
     }
 
     @Override
@@ -123,5 +126,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         currentCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String buttonText = String.format("%1$tb %1$te %1$tY", currentCalendar); //date formatting
         datePickerButton.setText(buttonText);
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        final Button timePickerButton = (Button) findViewById(R.id.showTimePickerDialogButton);
+        final Calendar timeCalendar = Calendar.getInstance();
+        timeCalendar.set(Calendar.HOUR, hourOfDay);
+        timeCalendar.set(Calendar.MINUTE, minute);
+        String buttonText = String.format("%1$tT %1$tZ", timeCalendar);
+        timePickerButton.setText(buttonText);
     }
 }
