@@ -26,21 +26,22 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return mJitters.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return mJitters.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View rowView = mInflater.inflate(R.layout.jitter_list_item, null);
+        return rowView;
     }
 }
