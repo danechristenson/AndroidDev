@@ -17,6 +17,13 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<Jitter> mJitters;
     private LayoutInflater mInflater;
 
+    public ListViewAdapter(Context mContext, ArrayList<Jitter> mJitters) {
+        this.mContext = mContext;
+        this.mJitters = mJitters;
+
+        this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
     @Override
     public int getCount() {
         return 0;
