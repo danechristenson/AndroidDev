@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,6 @@ public class ViewReviews extends ListActivity {
         }
 
 
-        final ListView dataTextView = (ListView) findViewById(R.id.reviews_list_view);
-
         RequestQueue queue = Volley.newRequestQueue(this);
 
         String url = "http://www.youcode.ca/Lab01Servlet?CATEGORY=" + categoryRadioSelection;
@@ -67,7 +66,7 @@ public class ViewReviews extends ListActivity {
 
                         reviews.add(currentReview);
                     } catch (Exception ex) {
-                        Toast.makeText(ViewReviews.this, "something broke", Toast.LENGTH_SHORT).show();
+                        Log.i("broken", "something broke");
                     }
                 }
 
