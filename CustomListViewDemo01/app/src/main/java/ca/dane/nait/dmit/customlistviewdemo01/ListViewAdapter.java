@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,16 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = mInflater.inflate(R.layout.jitter_list_item, null);
+
+        Jitter currentJitter = (Jitter) getItem(position);
+        TextView senderTextView = (TextView) rowView.findViewById(R.id.senderTextView);
+        TextView dateTextView = (TextView) rowView.findViewById(R.id.dateTextView);
+        TextView textTextView = (TextView) rowView.findViewById(R.id.textTextView);
+        senderTextView.setText(currentJitter.sender);
+        dateTextView.setText(currentJitter.date);
+        textTextView.setText(currentJitter.text);
+
+
         return rowView;
     }
 }
