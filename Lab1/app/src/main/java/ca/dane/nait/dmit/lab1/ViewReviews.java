@@ -47,17 +47,20 @@ public class ViewReviews extends ListActivity {
         // Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(String response) { //TODO:(dane) why is this being skipped?
                 // Display the response
                 // dataTextView.setText("Response is: " + response);
                 // STEP 3: create an adaptor for the list data
                 String[] responseArray = response.split("\r\n");
-                ListAdapter responseAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_view_item, responseArray);
-               final ArrayList<Review> reviews = new ArrayList<>();
+
+
+                //ListAdapter responseAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_view_item, responseArray);
+               ArrayList<Review> reviews = new ArrayList<>();
                 for (int i = 0; i < responseArray.length; i++) {
                     try {
-                        Review currentReview = new Review();
+                        String currentLineText = responseArray[i]; //shouldnt need this as each thing is added to i with a new line
 
+                        Review currentReview = new Review();
                         currentReview.time = responseArray[i];
                         currentReview.reviewer = responseArray[i + 1];
                         currentReview.category = responseArray[i + 2];
@@ -70,37 +73,16 @@ public class ViewReviews extends ListActivity {
                     }
                 }
 
-                ArrayAdapter<Review> reviewList =  new ArrayAdapter<Review>(getApplicationContext(), -1, reviews) {
-                    @NonNull
-                    @Override
-                    public View getView(int position, @Nullable View convertView,
-                                        @NonNull ViewGroup parent) {
-                        LayoutInflater inflater = (LayoutInflater)  ViewReviews.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        View inflatedView = inflater.inflate(R.layout.list_view_item, null);
-                        TextView timeTextView = (TextView) inflatedView.findViewById(R.id.time_textview);
-                        timeTextView.setText(reviews.get(position).time);
-                        TextView reviewerTextView = (TextView) inflatedView.findViewById(R.id.review_textview);
-                        reviewerTextView.setText(reviews.get(position).reviewer);
-                        TextView categoryTextView = (TextView) inflatedView.findViewById(R.id.category_textview);
-                        categoryTextView.setText(reviews.get(position).time);
-                        TextView nomineeTextView = (TextView) inflatedView.findViewById(R.id.nominee_textview);
-                        nomineeTextView.setText(reviews.get(position).time);
-                        TextView reviewTextView = (TextView) inflatedView.findViewById(R.id.review_textview);
-                        reviewTextView.setText(reviews.get(position).time);
-
-                        return inflatedView;
-                    }
-                };
-
                 ListView reviewsListView = (ListView) findViewById(R.id.reviews_list_view);
-                reviewsListView.setAdapter(reviewList); //TODO:(dane) Find out why this is returning NULL
+                ListViewAdapter adapter = new ListViewAdapter(getApplicationContext(),reviews);
+                reviewsListView.setAdapter(adapter);
 // STEP 4: Associate the Adapter with the ListActivity
-                setListAdapter(responseAdapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //dataTextView.setText("Error retrieving data from the server");
+                Toast.makeText(getApplicationContext(), "Error calling the service", Toast.LENGTH_SHORT).show();
             }
         });
         // Add the request to the RequestQueue.
