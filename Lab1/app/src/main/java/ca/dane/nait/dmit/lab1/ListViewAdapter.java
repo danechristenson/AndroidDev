@@ -36,7 +36,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         Review reviews = (Review) getItem(position);
         TextView timeTextView = (TextView) inflatedView.findViewById(R.id.time_textview);
-        TextView reviewerTextView = (TextView) inflatedView.findViewById(R.id.review_textview);
+        TextView reviewerTextView = (TextView) inflatedView.findViewById(R.id.reviewer_textview);
         TextView categoryTextView = (TextView) inflatedView.findViewById(R.id.category_textview);
         TextView nomineeTextView = (TextView) inflatedView.findViewById(R.id.nominee_textview);
         TextView reviewTextView = (TextView) inflatedView.findViewById(R.id.review_textview);
