@@ -35,7 +35,7 @@ protected String categoryRadioSelection = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setBackgroundColor();
+        //setBackgroundColor();
     }
 
     protected void setBackgroundColor(){
@@ -52,6 +52,9 @@ protected String categoryRadioSelection = "";
         categoryRadioButtonGroup.getCheckedRadioButtonId();
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://www.youcode.ca/Lab01Servlet";
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        final String namePreference = prefs.getString("preference_name", "Dane Christenson");
+        final String passwordPref = prefs.getString("preference_password", "oscar275");
 
         if (!nomineeEditText.getText().toString().isEmpty() && !reviewEditText.getText().toString().isEmpty()) {
 
@@ -73,12 +76,14 @@ protected String categoryRadioSelection = "";
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     // return super.getParams();
+
+
                     Map<String, String> params = new HashMap<>();
                     params.put("REVIEW", reviewEditText.getText().toString());
-                    params.put("REVIEWER", "Dane Christenson");
+                    params.put("REVIEWER",namePreference);
                     params.put("NOMINEE", nomineeEditText.getText().toString());
                     params.put("CATEGORY", categoryRadioSelection);
-                    params.put("PASSWORD", "oscar275");
+                    params.put("PASSWORD", passwordPref);
                     return params;
 
 
