@@ -53,40 +53,43 @@ protected String categoryRadioSelection = "";
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://www.youcode.ca/Lab01Servlet";
 
-        //Request a string response from the provided URL
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                //Display the response
-                Toast.makeText(MainActivity.this, "Review sent!", Toast.LENGTH_LONG).show();
-                nomineeEditText.setText("");
-                reviewEditText.setText("");
-                categoryRadioButtonGroup.clearCheck();
-                categoryRadioSelection = "";
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                // return super.getParams();
-                Map<String, String> params = new HashMap<>();
-                params.put("REVIEW", reviewEditText.getText().toString());
-                params.put("REVIEWER", "Dane Christenson");
-                params.put("NOMINEE", nomineeEditText.getText().toString());
-                params.put("CATEGORY", categoryRadioSelection);
-                params.put("PASSWORD", "oscar275");
-                return params;
+        if (!nomineeEditText.getText().toString().isEmpty() && !reviewEditText.getText().toString().isEmpty()) {
+
+            //Request a string response from the provided URL
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    //Display the response
+                    Toast.makeText(MainActivity.this, "Review sent!", Toast.LENGTH_LONG).show();
+                    nomineeEditText.setText("");
+                    reviewEditText.setText("");
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    // return super.getParams();
+                    Map<String, String> params = new HashMap<>();
+                    params.put("REVIEW", reviewEditText.getText().toString());
+                    params.put("REVIEWER", "Dane Christenson");
+                    params.put("NOMINEE", nomineeEditText.getText().toString());
+                    params.put("CATEGORY", categoryRadioSelection);
+                    params.put("PASSWORD", "oscar275");
+                    return params;
 
 
-            }
-        };
+                }
+            };
 
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
+            // Add the request to the RequestQueue.
+            queue.add(stringRequest);
+        } else {
+            Toast.makeText(this, "Woops looks like your missed one.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
