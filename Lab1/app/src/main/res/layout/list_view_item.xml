@@ -11,30 +11,35 @@
         android:id="@+id/time_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text="time" />
 
     <TextView
         android:id="@+id/reviewer_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text="reviewer" />
 
     <TextView
         android:id="@+id/category_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text="@string/category" />
 
     <TextView
         android:id="@+id/nominee_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text="@string/nominee" />
 
     <TextView
         android:id="@+id/review_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text="@string/review" />
 
 </LinearLayout>

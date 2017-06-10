@@ -66,7 +66,7 @@ public class ViewReviews extends AppCompatActivity {
                     }
                 }
 
-                ListView reviewsListView = (ListView) findViewById(R.id.reviews_list_view); //FIXME(dane): why does this come back null?
+                ListView reviewsListView = (ListView) findViewById(R.id.reviews_list_view);
                 ListViewAdapter adapter = new ListViewAdapter(getApplicationContext(), reviews);
                 reviewsListView.setAdapter(adapter);
 // STEP 4: Associate the Adapter with the ListActivity

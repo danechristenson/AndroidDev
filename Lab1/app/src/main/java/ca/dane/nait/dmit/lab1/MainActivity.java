@@ -58,7 +58,7 @@ protected String categoryRadioSelection = "";
             @Override
             public void onResponse(String response) {
                 //Display the response
-                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Review sent!", Toast.LENGTH_LONG).show();
                 nomineeEditText.setText("");
                 reviewEditText.setText("");
                 categoryRadioButtonGroup.clearCheck();
