@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Lab2</string>
+    <string name="title_activity_reviews">Reviews</string>
+    <string name="rating">Rating</string>
+    <string name="addInfo">Additional Information</string>
+    <string name="description">Description</string>
+    <string name="review">Review</string>
+    <string name="category">Category</string>
+    <string name="addReview">Add Review</string>
 </resources>
