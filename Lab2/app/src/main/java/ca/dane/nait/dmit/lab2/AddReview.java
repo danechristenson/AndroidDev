@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
+import ca.dane.nait.dmit.lab2.model.Review;
+import ca.dane.nait.dmit.lab2.model.ReviewContract;
 import ca.dane.nait.dmit.lab2.model.ReviewDatabaseHelper;
 
 public class AddReview extends AppCompatActivity {
@@ -32,24 +35,38 @@ public class AddReview extends AppCompatActivity {
         mReviewEditText = (EditText) findViewById(R.id.addReviewReviewEditText);
         mRatingEditText = (EditText) findViewById(R.id.addReviewRatingEditText);
 
-        ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
-        Cursor cursor = dbHelper.findAllReviewsCursor();
-
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_add_review, cursor, )
+        //ArrayAdapter<> adapter = ArrayAdapter.createFromResource(this, R.array.)
+//        ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
+//        Cursor cursor = dbHelper.findAllReviewsCursor();
+//        String[] fromColumns = {
+//                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
+//
+//        };
+//        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_add_review, cursor, fromColumns, );
 
     }
 
-//    public void onAddExpense(View view) {
-//        String description =mDescriptionEditText.getText().toString();
-//        float amount = Float.parseFloat(mAmountEditText.getText().toString());
-//        String dateString = String.format("$1-$2-%3", mDatePicker.getYear(), mDatePicker.getMonth(), mDatePicker.getDayOfMonth());
-//
-//        ExpenseDatabaseHelper dbHelper = new ExpenseDatabaseHelper(this);
-//        Expense currentExpense = new Expense(description, amount, dateString);
-//        dbHelper.addExpense(currentExpense);
-//
-//        mDescriptionEditText.setText("");
-//        mAmountEditText.setText("0.00");
-//
-//    }
+    public void onAddReviewe(View view) {
+        String description = mDescriptionEditText.getText().toString();
+        String category = mCategorySpinner.getAdapter().toString();
+        String addInfo = mAddInfoEditText.getText().toString();
+        String review = mReviewEditText.getText().toString();
+        int rating = Integer.parseInt(mRatingEditText.getText().toString());
+
+
+        ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
+        Review currentReview = new Review(category, description, addInfo, review, rating);
+        dbHelper.addReview(currentReview);
+
+        mDescriptionEditText.setText("");
+        mAddInfoEditText.setText("");
+        mReviewEditText.setText("");
+        mRatingEditText.setText("0");
+
+    }
 }

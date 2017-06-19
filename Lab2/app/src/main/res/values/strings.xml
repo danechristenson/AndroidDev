@@ -7,4 +7,6 @@
     <string name="review">Review</string>
     <string name="category">Category</string>
     <string name="addReview">Add Review</string>
+    <string name="preferences">Preferences</string>
+    <string name="viewReviews">View Reviews</string>
 </resources>

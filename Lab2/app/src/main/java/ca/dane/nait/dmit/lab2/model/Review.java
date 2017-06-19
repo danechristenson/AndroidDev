@@ -13,13 +13,20 @@ public class Review {
     public int rating;
     public String alias;
 
-    public Review(int id, String category, String description, String addInfo, String review, int rating,String alias) {
+    public Review(int id, String category, String description, String addInfo, String review, int rating) {
         this.id = id;
         this.category = category;
         this.description = description;
         this.addInfo = addInfo;
         this.review = review;
         this.rating = rating;
-        this.alias = alias;
     }
+    public Review(String category, String description, String addInfo, String review, int rating) {
+        this.category = category;
+        this.description = description;
+        this.addInfo = addInfo;
+        this.review = review;
+        this.rating = rating;
+    }
+
 }

@@ -7,12 +7,8 @@
     tools:context="ca.dane.nait.dmit.lab2.AddReview">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,7 +20,7 @@
         <Spinner
             android:id="@+id/addReviewCategorySpinner"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="38dp"
             android:entries="@string/category" />
 
         <EditText
@@ -63,6 +59,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onAddReviewe"
             android:text="@string/addReview" />
 
 

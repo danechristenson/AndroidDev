@@ -23,7 +23,7 @@ public class Reviews extends AppCompatActivity {
 
         ListView reviewsListView = (ListView) findViewById(R.id.reviewsListView);
         List<Review> reviews = new ArrayList<>();
-        Review review1 = new Review(1,"Best Food", "The best food in Edmonton", "Whyte Ave", "Meat", 5, "dane" );
+        Review review1 = new Review(1,"Best Food", "The best food in Edmonton", "Whyte Ave", "Meat", 5 );
         reviews.add(review1);
         ReviewAdapter adapter = new ReviewAdapter(this, reviews);
         reviewsListView.setAdapter(adapter);
