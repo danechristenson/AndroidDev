@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -27,21 +30,29 @@ public class TrackAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return 0;
+        return mDataSource.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return mDataSource.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View rowView = mInflater.inflate(R.layout.track_item, null);
+
+        Track currentTrack = (Track) getItem(position);
+        TextView trackNameTextView = (TextView) rowView.findViewById(R.id.activity_main_trackNameTextView);
+        TextView artistNameTextView = (TextView) rowView.findViewById(R.id.activity_main_trackNameTextView);
+        trackNameTextView.setText(currentTrack.getTrackName());
+        artistNameTextView.setText(currentTrack.getArtistName());
+
+        return rowView;
     }
 }

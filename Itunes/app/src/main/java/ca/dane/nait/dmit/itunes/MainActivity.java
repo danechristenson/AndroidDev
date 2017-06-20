@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         GsonRequest<Model> request = new GsonRequest<>(url, Model.class, null, new Response.Listener<Model>() {
             @Override
             public void onResponse(Model response) {
-                Log.i("Results: " , response.getResultCount() + "");
+                TrackAdapter adapter = new TrackAdapter(MainActivity.this, response.getResults());
+                mResultsListView.setAdapter(adapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
