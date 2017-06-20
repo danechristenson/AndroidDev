@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         mResultsListView = (ListView) findViewById(R.id.main_activity_searchResultsListView);
     }
     public void onSearchClicked (View view){
+        final String searchTerm = mSearchTermEditText.getText().toString();
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://itunes.apple.com/search?medium=music&entity=song&term=" + searchTerm;
 
     }
 
