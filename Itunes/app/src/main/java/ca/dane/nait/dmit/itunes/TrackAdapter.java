@@ -49,7 +49,7 @@ public class TrackAdapter extends BaseAdapter{
 
         Track currentTrack = (Track) getItem(position);
         TextView trackNameTextView = (TextView) rowView.findViewById(R.id.activity_main_trackNameTextView);
-        TextView artistNameTextView = (TextView) rowView.findViewById(R.id.activity_main_trackNameTextView);
+        TextView artistNameTextView = (TextView) rowView.findViewById(R.id.activity_main_artistNameTextView);
         trackNameTextView.setText(currentTrack.getTrackName());
         artistNameTextView.setText(currentTrack.getArtistName());
 
