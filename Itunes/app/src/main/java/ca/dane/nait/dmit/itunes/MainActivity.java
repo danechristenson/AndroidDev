@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.this, "Error Processing json", Toast.LENGTH_SHORT).show();
             }
-        })
+        });
+
+        queue.add(request);
     }
 
 }
