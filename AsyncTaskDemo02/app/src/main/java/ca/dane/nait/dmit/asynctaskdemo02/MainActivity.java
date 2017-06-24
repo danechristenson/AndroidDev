@@ -27,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
          DownloadImageTask imageTask = new DownloadImageTask(mProgressBar, mButton,mImageView);
         imageTask.execute("http://www.guidingtech.com/assets/postimages/2016/03/disable-physical-button-android.png");
+//        imageTask.execute("http://wallpaperpulse.com/img/1124782.jpg");
     }
 }

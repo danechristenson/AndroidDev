@@ -4,7 +4,7 @@
         android:id="@+id/preferences"
         android:title="@string/preferences" />
     <item
-        android:id="@+id/view_reviews"
-        android:title="@string/viewReviews" />
+        android:id="@+id/add_review"
+        android:title="@string/addReview" />
 
 </menu>

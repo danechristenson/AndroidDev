@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.view_reviews:
-                Intent viewReviewsIntent = new Intent(this, ViewReviews.class);
-                viewReviewsIntent.putExtra("radioValue",categoryRadioSelection );
+            case R.id.add_review:
+                Intent viewReviewsIntent = new Intent(this, AddReview.class);
+//                viewReviewsIntent.putExtra("radioValue",categoryRadioSelection );
                 startActivity(viewReviewsIntent);
                 return true;
             case R.id.preferences:
-                Intent viewPreferencesIntent = new Intent(this, MainPreferenceActivity.class);
-                startActivityForResult(viewPreferencesIntent, 0);
+//                Intent viewPreferencesIntent = new Intent(this, MainPreferenceActivity.class);
+//                startActivityForResult(viewPreferencesIntent, 0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

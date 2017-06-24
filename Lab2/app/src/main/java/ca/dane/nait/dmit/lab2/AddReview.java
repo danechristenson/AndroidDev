@@ -35,23 +35,23 @@ public class AddReview extends AppCompatActivity {
         mReviewEditText = (EditText) findViewById(R.id.addReviewReviewEditText);
         mRatingEditText = (EditText) findViewById(R.id.addReviewRatingEditText);
 
-        //ArrayAdapter<> adapter = ArrayAdapter.createFromResource(this, R.array.)
-//        ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
-//        Cursor cursor = dbHelper.findAllReviewsCursor();
-//        String[] fromColumns = {
-//                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
-//                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
-//                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
-//                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
-//                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
-//                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
-//
-//        };
-//        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_add_review, cursor, fromColumns, );
+        ArrayAdapter<> adapter = ArrayAdapter.createFromResource(this, R.array.)
+        ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
+        Cursor cursor = dbHelper.findAllReviewsCursor();
+        String[] fromColumns = {
+                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
+                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
+                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
+                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
+                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
+                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
+
+        };
+        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_add_review, cursor, fromColumns,  );
 
     }
 
-    public void onAddReviewe(View view) {
+    public void onAddReview(View view) {
         String description = mDescriptionEditText.getText().toString();
         String category = mCategorySpinner.getAdapter().toString();
         String addInfo = mAddInfoEditText.getText().toString();

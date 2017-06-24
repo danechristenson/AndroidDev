@@ -1,5 +1,6 @@
 package ca.dane.nait.dmit.asynctaskdemo02;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -40,12 +41,19 @@ public class DownloadImageTask extends AsyncTask<String, Integer, Bitmap> {
             URL url = new URL(urlString);
             connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+
+            int fileSize = connection.getContentLength();
+            publishProgress(0, fileSize);
+            int totalBytesRead = 0;
+
             final int BUFFER_SIZE = 1024;
             byte[] buffer = new byte[BUFFER_SIZE];
             int bytesRead = 0;
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             while((bytesRead = inputStream.read(buffer)) != -1){
                 baos.write(buffer, 0, bytesRead);
+                totalBytesRead += bytesRead;
+                publishProgress(totalBytesRead);
             }
             return BitmapFactory.decodeByteArray(baos.toByteArray(), 0, baos.size());
         } catch (Exception e) {
@@ -61,6 +69,13 @@ public class DownloadImageTask extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
+        if(values.length == 2) {
+            Integer maxValue = values[1];
+            mProgressBar.setMax(maxValue);
+        }else{
+            Integer currentValue = values[0];
+            mProgressBar.setProgress(currentValue);
+        }
     }
 
     @Override
