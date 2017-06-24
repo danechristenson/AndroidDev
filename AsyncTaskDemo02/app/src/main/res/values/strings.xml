@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AsyncTaskDemo02</string>
+    <string name="downloadImage">Download Image </string>
+</resources>
