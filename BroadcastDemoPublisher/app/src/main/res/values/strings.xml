@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BroadcastDemoPublisher</string>
+    <string name="BroadcastMessage">Broadcast Message</string>
+</resources>
