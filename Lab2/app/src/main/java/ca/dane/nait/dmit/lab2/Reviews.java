@@ -29,23 +29,23 @@ public class Reviews extends AppCompatActivity {
         reviewsListView.setAdapter(adapter);
         String[] projection = {
                 ReviewContract.ReviewEntry.COLUMN_NAME_ID,
-                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
-                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
-                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
-                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
+//                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
+                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY
+//                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
         };
 
         ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
         Cursor cursor = dbHelper.findAllReviewsCursor();
         String[] fromColumns = {
-                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
-                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
-                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
-                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
+//                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
+                ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY
+//                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
 
         };
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
@@ -35,20 +36,18 @@ public class AddReview extends AppCompatActivity {
         mReviewEditText = (EditText) findViewById(R.id.addReviewReviewEditText);
         mRatingEditText = (EditText) findViewById(R.id.addReviewRatingEditText);
 
-        ArrayAdapter<> adapter = ArrayAdapter.createFromResource(this, R.array.)
         ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
         Cursor cursor = dbHelper.findAllReviewsCursor();
         String[] fromColumns = {
-                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
-                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
                 ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
-                ReviewContract.ReviewEntry.COLUMN_NAME_RATING
-
         };
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_add_review, cursor, fromColumns,  );
 
+        int[] toViews = {
+                R.id.addReviewCategorySpinner
+        };
+        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.id.addReviewCategorySpinner, cursor, fromColumns, toViews, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER );
+
+        mCategorySpinner.setAdapter(cursorAdapter);
     }
 
     public void onAddReview(View view) {

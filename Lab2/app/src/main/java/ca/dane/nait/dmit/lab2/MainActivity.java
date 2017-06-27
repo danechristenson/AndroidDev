@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 //                Intent viewPreferencesIntent = new Intent(this, MainPreferenceActivity.class);
 //                startActivityForResult(viewPreferencesIntent, 0);
                 return true;
+            //case R.id.add_category:
+            
             default:
                 return super.onOptionsItemSelected(item);
         }

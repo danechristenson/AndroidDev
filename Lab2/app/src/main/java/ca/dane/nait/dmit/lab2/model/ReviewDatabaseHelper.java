@@ -29,12 +29,12 @@ public class ReviewDatabaseHelper extends SQLiteOpenHelper {
     public void addReview(Review currentReview) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO, currentReview.addInfo);
-        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS, currentReview.alias);
+//        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO, currentReview.addInfo);
+//        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS, currentReview.alias);
         values.put(ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY, currentReview.category);
-        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION, currentReview.description);
-        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_RATING, currentReview.rating);
-        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW, currentReview.review);
+//        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION, currentReview.description);
+//        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_RATING, currentReview.rating);
+//        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW, currentReview.review);
         db.insert(ReviewContract.ReviewEntry.TABLE_NAME, null, values);
     }
 
@@ -42,13 +42,13 @@ public class ReviewDatabaseHelper extends SQLiteOpenHelper {
         String[] projection = {
                 ReviewContract.ReviewEntry.COLUMN_NAME_ID,
                 ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
-                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
-                ReviewContract.ReviewEntry.COLUMN_NAME_RATING,
-                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
-                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_RATING,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW,
+//                ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS
         };
-        String sortBy = ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION + " DESC";
+
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(
                 ReviewContract.ReviewEntry.TABLE_NAME,
@@ -57,7 +57,7 @@ public class ReviewDatabaseHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                sortBy
+                null
         );
         return cursor;
     }
