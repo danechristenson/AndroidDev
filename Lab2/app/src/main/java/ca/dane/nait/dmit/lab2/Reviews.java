@@ -3,6 +3,7 @@ package ca.dane.nait.dmit.lab2;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -10,6 +11,7 @@ import android.widget.SimpleCursorAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.dane.nait.dmit.lab2.model.DownloadReviews;
 import ca.dane.nait.dmit.lab2.model.Review;
 import ca.dane.nait.dmit.lab2.model.ReviewContract;
 import ca.dane.nait.dmit.lab2.model.ReviewDatabaseHelper;
@@ -60,5 +62,8 @@ public class Reviews extends AppCompatActivity {
         );
 
         reviewsListView.setAdapter(cursorAdapter);
+    }
+    public void onDownloadClick(View view){
+        new DownloadReviews().execute("http://www.youcode.ca/Lab02Servlet?Category="); //TODO: (dane) + categorySelected);
     }
 }
