@@ -60,7 +60,7 @@ public class AddReview extends AppCompatActivity {
 
         ReviewDatabaseHelper dbHelper = new ReviewDatabaseHelper(this);
         Review currentReview = new Review(category, description, addInfo, review, rating);
-        dbHelper.addReview(currentReview);
+        //dbHelper.addReview(currentReview); TODO change to post to server
 
         mDescriptionEditText.setText("");
         mAddInfoEditText.setText("");

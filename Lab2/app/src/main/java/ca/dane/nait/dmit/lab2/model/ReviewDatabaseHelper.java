@@ -26,12 +26,12 @@ public class ReviewDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(ReviewContract.SQL_CREATE_ENTRIES);
     }
 
-    public void addReview(Review currentReview) {
+    public void addReview(String currentReview) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 //        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_ADDINFO, currentReview.addInfo);
 //        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_ALIAS, currentReview.alias);
-        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY, currentReview.category);
+        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_CATEGORY, currentReview);
 //        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_DESCRIPTION, currentReview.description);
 //        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_RATING, currentReview.rating);
 //        values.put(ReviewContract.ReviewEntry.COLUMN_NAME_REVIEW, currentReview.review);

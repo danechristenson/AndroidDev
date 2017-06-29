@@ -9,4 +9,5 @@
     <string name="addReview">Add Review</string>
     <string name="preferences">Preferences</string>
     <string name="viewReviews">View Reviews</string>
+    <string name="addCategory">Add Category</string>
 </resources>

@@ -10,7 +10,7 @@ public final class ReviewContract {
     private ReviewContract(){}
 
     public static class ReviewEntry implements BaseColumns {
-        public static final String TABLE_NAME = "reviewTable";
+        public static final String TABLE_NAME = "categoryTable";
 
         public static final String COLUMN_NAME_ID = "_id";
         public static final String COLUMN_NAME_CATEGORY = "category";
