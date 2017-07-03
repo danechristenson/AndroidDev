@@ -74,9 +74,9 @@ public class DownloadCategoryTask extends AsyncTask<String, Void, List<String>> 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
-                intent.putExtra("category", newdata.get(position));
-                Toast.makeText(mContext, newdata.get(position), Toast.LENGTH_SHORT).show();
+                Intent viewReviewsIntent = new Intent(mContext, ViewReviews.class);
+                viewReviewsIntent.putExtra("CATEGORY_SELECTED", newdata.get(position));
+                mContext.startActivity(viewReviewsIntent);
             }
         });
     }

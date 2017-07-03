@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="Dane Christenson"
+        android:key="preference_name"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/name" />
+    <EditTextPreference
+        android:defaultValue="oscar275"
+        android:password="true"
+        android:key="preference_password"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/password" />
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/background_color_options"
+        android:entryValues="@array/background_color_options_values"
+        android:key="preference_background_color"
+        android:title="@string/background_color" />
+</PreferenceScreen>

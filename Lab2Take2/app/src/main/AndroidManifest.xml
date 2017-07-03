@@ -12,6 +12,7 @@
         <activity android:name=".ViewReviews">
 
         </activity>
+        <activity android:name=".MainPreferenceActivity"></activity>
         <activity android:name=".PickCategory"><intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
