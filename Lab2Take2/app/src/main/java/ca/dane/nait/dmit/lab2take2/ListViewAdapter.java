@@ -1,6 +1,9 @@
 package ca.dane.nait.dmit.lab2take2;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +36,8 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View inflatedView = mInflater.inflate(R.layout.review_list_item, null);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        String fontColorPref = prefs.getString("preference_font_color", "#FFFFFF");
 
         Review reviews = (Review) getItem(position);
         TextView aliasTextView = (TextView) inflatedView.findViewById(R.id.view_review_AliasTextView);
@@ -40,6 +45,12 @@ public class ListViewAdapter extends BaseAdapter {
         TextView categoryTextView = (TextView) inflatedView.findViewById(R.id.view_review_CategoryTextView);
         TextView desciptionTextView = (TextView) inflatedView.findViewById(R.id.view_review_DescriptionTextView);
         TextView reviewTextView = (TextView) inflatedView.findViewById(R.id.view_review_ReviewTextView);
+
+        aliasTextView.setTextColor(Color.parseColor(fontColorPref));
+        addInfoTextView.setTextColor(Color.parseColor(fontColorPref));
+        categoryTextView.setTextColor(Color.parseColor(fontColorPref));
+        desciptionTextView.setTextColor(Color.parseColor(fontColorPref));
+        reviewTextView.setTextColor(Color.parseColor(fontColorPref));
 
         aliasTextView.setText(reviews.alias);
         addInfoTextView.setText(reviews.addInfo);

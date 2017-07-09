@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class PickCategory extends AppCompatActivity {
 
@@ -78,6 +79,13 @@ public class PickCategory extends AppCompatActivity {
         String backgroundColorPref = prefs.getString("preference_background_color", "#FFFFFF");
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.pickCategoryContent);
         layout.setBackgroundColor(Color.parseColor(backgroundColorPref));
+    }
+
+    protected void setFontColor(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String fontColorPref = prefs.getString("preference_font_color", "#FFFFFF");
+        TextView layout = (TextView) findViewById(R.id.view_review_AddInfoTextView);
+        layout.setTextColor(Color.parseColor(fontColorPref));
     }
     //endregion
 

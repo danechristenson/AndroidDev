@@ -13,4 +13,7 @@
     <string name="url">URL</string>
     <string name="password">Password</string>
     <string name="background_color">Background Color</string>
+    <string name="fontColor">Font Color</string>
+    <string name="preferences">Preferences</string>
+    <string name="addReview">Add Review</string>
 </resources>

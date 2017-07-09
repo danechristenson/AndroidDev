@@ -1,6 +1,10 @@
 package ca.dane.nait.dmit.lab2take2;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -30,7 +34,7 @@ public class ViewReviews extends AppCompatActivity {
             categoryRadioSelection = extras.getString("CATEGORY_SELECTED");
         }
 
-
+        setBackgroundColor();
         RequestQueue queue = Volley.newRequestQueue(this);
 
         String url = "http://www.youcode.ca/Lab02Servlet?CATEGORY=" + categoryRadioSelection;
@@ -80,5 +84,11 @@ public class ViewReviews extends AppCompatActivity {
         });
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+    protected void setBackgroundColor(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String backgroundColorPref = prefs.getString("preference_background_color", "#FFFFFF");
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.viewReviewsContent);
+        layout.setBackgroundColor(Color.parseColor(backgroundColorPref));
     }
 }
