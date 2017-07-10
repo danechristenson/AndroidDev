@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/preferences"
-        android:title="@string/preferences" />
+        android:id="@+id/view_reviews"
+        android:title="@string/viewReviews" />
+
     <item
         android:id="@+id/add_reviews"
         android:title="@string/addReview" />
+
+    <item
+        android:id="@+id/add_category"
+        android:title="@string/addCategory" />
+
+    <item
+        android:id="@+id/preferences"
+        android:title="@string/preferences" />
+
 
 </menu>

@@ -16,4 +16,9 @@
     <string name="fontColor">Font Color</string>
     <string name="preferences">Preferences</string>
     <string name="addReview">Add Review</string>
+    <string name="description">Description</string>
+    <string name="addInfo">Additional Information</string>
+    <string name="rating">Rating</string>
+    <string name="viewReviews">View Reviews</string>
+    <string name="addCategory">Add Category</string>
 </resources>

@@ -1,6 +1,5 @@
 package ca.dane.nait.dmit.lab2take2;
 
-import android.app.LauncherActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -8,35 +7,36 @@ import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class PickCategory extends AppCompatActivity {
+import ca.dane.nait.dmit.lab2take2.model.Category;
+import ca.dane.nait.dmit.lab2take2.model.CategoryDatabaseHelper;
 
-    private String[] categories;
+public class AddCategory extends AppCompatActivity {
+
+    private EditText mCategoryEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pick_category);
+        setContentView(R.layout.activity_add_category);
 
-        setBackgroundColor();
+        mCategoryEditText = (EditText) findViewById(R.id.addCategory_EditText);
+    }
 
-        ListView categoryListView = (ListView) findViewById(R.id.pick_category_ListView);
-        try {
-            new DownloadCategoryTask(PickCategory.this, categoryListView).execute("http://www.youcode.ca/Lab02Servlet?Service=categories");
-        }catch (Exception e){
-            Log.i("broken", e.getMessage());
-        }
+    public void addCategoryClick(View view){
+        String category = mCategoryEditText.getText().toString();
 
+        CategoryDatabaseHelper dbHelper = new CategoryDatabaseHelper(this);
+        Category currentCategory =  new Category(category);
+        dbHelper.addCategory(currentCategory);
 
-
+        mCategoryEditText.setText("");
     }
 
     //region MENU
@@ -96,6 +96,4 @@ public class PickCategory extends AppCompatActivity {
         layout.setTextColor(Color.parseColor(fontColorPref));
     }
     //endregion
-
-
 }

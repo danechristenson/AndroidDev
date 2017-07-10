@@ -13,15 +13,15 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ViewReviews" />
         <activity android:name=".MainPreferenceActivity" />
-        <activity android:name=".PickCategory">
+        <activity android:name=".PickCategory"></activity>
+        <activity android:name=".PostReview">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddReviewPickCategory" />
-        <activity android:name=".PostReview"></activity>
+        <activity android:name=".AddCategory"></activity>
     </application>
 
 </manifest>
