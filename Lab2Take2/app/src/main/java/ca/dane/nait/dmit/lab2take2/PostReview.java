@@ -83,12 +83,12 @@ public class PostReview extends AppCompatActivity {
         final String rating = mRatingEditText.getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://www.youcode.ca/Lab02Servlet"; //TODO replace with value
+        String url = "http://www.youcode.ca/Lab02Servlet";
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         final String alias = prefs.getString("preference_name", "Dane Christenson");
 
         int ratingInt = Integer.parseInt(rating);
-//&& !category.isEmpty()
+
         if(!description.isEmpty()  && !addInfo.isEmpty() && !review.isEmpty() && ratingInt > 0 && ratingInt <= 5) {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -109,7 +109,7 @@ public class PostReview extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("CATEGORY", "movies");
+                    params.put("CATEGORY", category);
                     params.put("DESCRIPTION", description);
                     params.put("ADDINFO", addInfo);
                     params.put("REVIEW", review);

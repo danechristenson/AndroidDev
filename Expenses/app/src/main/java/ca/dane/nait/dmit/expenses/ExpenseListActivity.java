@@ -1,13 +1,13 @@
 package ca.dane.nait.dmit.expenses;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ExpenseListActivity extends AppCompatActivity {
+public class ExpenseListActivity extends SingleFragmentActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
+    protected Fragment createFragment() {
+        return new ExpenseListFragment();
     }
 }
