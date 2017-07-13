@@ -62,11 +62,11 @@ public class PostReview extends AppCompatActivity {
         };
 
         int[] toViews = {
-                R.id.addReviewCategorySpinner
+                R.id.category_textView
         };
         SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(
                 this,
-                R.layout.activity_post_review,
+                R.layout.category_spinner,
                 cursor,
                 fromColumns,
                 toViews,
