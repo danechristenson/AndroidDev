@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.List;
 
 /**
@@ -40,7 +42,7 @@ public class ExpenseListFragment extends Fragment {
     }
 
     // define the ViewHolder that will inflate and own the layout
-    private class ExpenseHolder extends RecyclerView.ViewHolder {
+    private class ExpenseHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mDescriptionTextView;
         private TextView mAmountTextView;
@@ -54,6 +56,8 @@ public class ExpenseListFragment extends Fragment {
             mDescriptionTextView = (TextView) itemView.findViewById(R.id.expense_description);
             mAmountTextView = (TextView) itemView.findViewById(R.id.expense_amount);
             mDateTextView = (TextView) itemView.findViewById(R.id.expense_date);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Expense currentExpense){
@@ -61,6 +65,11 @@ public class ExpenseListFragment extends Fragment {
             mDescriptionTextView.setText(mExpense.getDescription());
             mAmountTextView.setText(mExpense.getAmount() + "");
             mDateTextView.setText(mExpense.getDate().toString());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(), mExpense.getDescription() + " Clicked.", Toast.LENGTH_SHORT).show();
         }
     }
 
