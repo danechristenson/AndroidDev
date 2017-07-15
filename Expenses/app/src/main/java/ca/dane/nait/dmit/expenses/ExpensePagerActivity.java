@@ -31,7 +31,12 @@ public class ExpensePagerActivity extends AppCompatActivity {
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                return null;
+                Expense currentExpense = mExpenses.get(position);
+                ExpenseFragment fragment = new ExpenseFragment();
+                Bundle args = new Bundle();
+                args.putSerializable("expense_id", currentExpense.getId());
+                fragment.setArguments(args);
+                return fragment;
             }
 
             @Override
