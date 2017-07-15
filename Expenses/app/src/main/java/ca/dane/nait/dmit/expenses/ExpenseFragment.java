@@ -29,7 +29,9 @@ public class ExpenseFragment extends Fragment {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_expense, container, false);
 
-        UUID expenseId = (UUID) getActivity().getIntent().getSerializableExtra("expense_id");
+//        UUID expenseId = (UUID) getActivity().getIntent().getSerializableExtra("expense_id");
+       UUID expenseId = (UUID) getArguments().getSerializable("expense_id");
+
         mExpense = ExpenseRepository.getInstance(getActivity()).getExpense(expenseId);
 
         mDescription = (EditText) view.findViewById(R.id.expense_description);

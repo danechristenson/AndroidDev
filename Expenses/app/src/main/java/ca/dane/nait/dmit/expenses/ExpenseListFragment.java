@@ -71,7 +71,7 @@ public class ExpenseListFragment extends Fragment {
         @Override
         public void onClick(View v) {
 //            Toast.makeText(getActivity(), mExpense.getDescription() + " Clicked.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getActivity(), ExpenseActivity.class);
+            Intent intent = new Intent(getActivity(), ExpensePagerActivity.class);
             intent.putExtra("expense_id", mExpense.getId());
             startActivity(intent);
         }

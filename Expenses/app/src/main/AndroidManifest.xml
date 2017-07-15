@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExpenseActivity" android:parentActivityName=".ExpenseListActivity"></activity>
+        <activity android:name=".ExpensePagerActivity" android:parentActivityName=".ExpenseListActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by dchristenson5 on 7/14/2017.
@@ -27,6 +28,7 @@ public class ExpensePagerActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.expense_view_pager);
         mExpenses = ExpenseRepository.getInstance(this).getExpenses();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
@@ -41,8 +43,16 @@ public class ExpensePagerActivity extends AppCompatActivity {
 
             @Override
             public int getCount() {
-                return 0;
+                return mExpenses.size();
             }
         });
+
+//        UUID expenseId = (UUID) getArguments().getSerializableExtra("expense_id");
+//        for(int i = 0; i < mExpenses.size(); i++){
+//            if(mExpenses.get(i).equals(expenseId)){
+//                mViewPager.setCurrentItem(i);
+//                break;
+//            }
+//        }
     }
 }
