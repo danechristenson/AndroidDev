@@ -29,7 +29,7 @@ public class ExpenseRepository {
             Expense currentExpense = new Expense();
             currentExpense.setDescription("Expense #" + i);
             //assign a random amount between 1 and 100;
-            currentExpense.setAmount(numberGenerator.nextDouble() * 100);
+            currentExpense.setAmount(Math.round(numberGenerator.nextDouble() *10000.0) / 100.0);
             mExpenses.add(currentExpense);
         }
     }

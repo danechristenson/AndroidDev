@@ -1,5 +1,6 @@
 package ca.dane.nait.dmit.expenses;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -69,7 +70,10 @@ public class ExpenseListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(), mExpense.getDescription() + " Clicked.", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), mExpense.getDescription() + " Clicked.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), ExpenseActivity.class);
+            intent.putExtra("expense_id", mExpense.getId());
+            startActivity(intent);
         }
     }
 
