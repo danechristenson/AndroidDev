@@ -47,12 +47,12 @@ public class ExpensePagerActivity extends AppCompatActivity {
             }
         });
 
-//        UUID expenseId = (UUID) getArguments().getSerializableExtra("expense_id");
-//        for(int i = 0; i < mExpenses.size(); i++){
-//            if(mExpenses.get(i).equals(expenseId)){
-//                mViewPager.setCurrentItem(i);
-//                break;
-//            }
-//        }
+        UUID expenseId = (UUID) getIntent().getSerializableExtra("expense_id");
+        for(int i = 0; i < mExpenses.size(); i++){
+            if(mExpenses.get(i).getId().equals(expenseId)){
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
     }
 }
