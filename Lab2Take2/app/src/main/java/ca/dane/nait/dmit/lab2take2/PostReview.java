@@ -77,7 +77,8 @@ public class PostReview extends AppCompatActivity {
 
     public void onAddReview(View view) {
         final String description = mDescriptionEditText.getText().toString();
-        final String category = mCategorySpinner.getAdapter().toString();
+        final Cursor category = (Cursor) mCategorySpinner.getSelectedItem();
+        final String catString = category.getString(1);
         final String addInfo = mAddInfoEditText.getText().toString();
         final String review = mReviewEditText.getText().toString();
         final String rating = mRatingEditText.getText().toString();
@@ -109,7 +110,7 @@ public class PostReview extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("CATEGORY", category);
+                    params.put("CATEGORY", catString);
                     params.put("DESCRIPTION", description);
                     params.put("ADDINFO", addInfo);
                     params.put("REVIEW", review);

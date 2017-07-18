@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +37,13 @@ public class ViewReviews extends AppCompatActivity {
 
         setBackgroundColor();
         RequestQueue queue = Volley.newRequestQueue(this);
-
-        String url = "http://www.youcode.ca/Lab02Servlet?CATEGORY=" + categoryRadioSelection;
-
+        String url = "";
+try {
+    url = "http://www.youcode.ca/Lab02Servlet?CATEGORY=" + URLEncoder.encode(categoryRadioSelection, "UTF-8");
+//        url = "http://www.youcode.ca/Lab02Servlet?CATEGORY=Girls%20in%20bikinis";
+} catch (Exception ex){
+            Log.i("error", ex.getMessage());
+        }
         // Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
