@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">HomeWifi</string>
+    <string name="locationName">Location Name</string>
+    <string name="delete">Delete</string>
+    <string name="addNewLocation">Add New Location</string>
 </resources>
