@@ -17,6 +17,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -73,7 +74,23 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+                LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+                final LocationDatabaseHelper dbHelper = new LocationDatabaseHelper(getApplicationContext());
+                locationsList = dbHelper.findAllLocations();
 
+                for(int i = 0; i < locationsList.size(); i++){
+                    ca.dane.dmit.homewifi.LocationModel.Location newLocation = locationsList.get(i);
+                    if(newLocation.isActive){
+                        LatLng newLocationCoord = new LatLng(newLocation.lat, newLocation.lng);
+
+                        mMap.addMarker(new MarkerOptions().position(newLocationCoord).title(newLocation.description));
+                    }
+
+
+                }
             }
 
             @Override
@@ -108,7 +125,7 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
                 LatLng currentLocation = new LatLng(lastKnowLocation.getLatitude(), lastKnowLocation.getLongitude());
                 mMap.clear();
 
-                mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
+                mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation)); //moves camera to current location
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(14.0f));
 

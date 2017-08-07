@@ -72,13 +72,14 @@ public class WifiToggle extends AppCompatActivity {
         setContentView(R.layout.activity_wifi_toggle);
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        ListView locationListView = (ListView) findViewById(R.id.locationListView);
-        descriptionTextView = (TextView) findViewById(R.id.locationNameTextView);
-
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo wifi = wifiManager.getConnectionInfo();
 
         final List<ca.dane.dmit.homewifi.LocationModel.Location> locations = new ArrayList<>();
+        ListView locationListView = (ListView) findViewById(R.id.locationListView);
+        descriptionTextView = (TextView) findViewById(R.id.locationNameTextView);
+
+
         LocationAdapter adapter = new LocationAdapter(this, locations);
         locationListView.setAdapter(adapter);
 
@@ -104,8 +105,6 @@ public class WifiToggle extends AppCompatActivity {
         locationsList = dbHelper.findAllLocations();
 
         locationListView.setAdapter(cursorAdapter);
-        locationListView.setItemsCanFocus(true);
-
 
 
         locationListener = new LocationListener() {
