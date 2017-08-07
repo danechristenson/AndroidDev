@@ -12,23 +12,26 @@
         android:layout_weight="35.92"
         android:text="@string/locationName"
         android:textAlignment="textStart"
-        tools:text="@string/locationName" />
+        tools:text="@string/locationName"/>
 
-    <ToggleButton
+    <Switch
         android:id="@+id/wifiToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="11.05"
         android:background="@android:color/holo_blue_dark"
-        tools:text="On/Off"
-        android:checked="true"/>
+        android:checked="true"
+        android:textOff="@string/toggleOff"
+        android:textOn="@string/toggleOn"
+        tools:text="On/Off" />
 
-    <Button
-        android:id="@+id/deleteLocationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        android:text="@string/delete" />
+    <!--<Button-->
+        <!--android:id="@+id/deleteLocationButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@color/colorAccent"-->
+        <!--android:onClick="deleteLocation"-->
+        <!--android:text="@string/delete" />-->
 
 </LinearLayout>

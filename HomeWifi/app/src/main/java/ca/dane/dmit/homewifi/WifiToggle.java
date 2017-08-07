@@ -8,21 +8,23 @@ import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +36,13 @@ import ca.dane.dmit.homewifi.LocationModel.LocationDatabaseHelper;
 
 public class WifiToggle extends AppCompatActivity {
 
-    Button toggleButton;
-    TextView wifiStateTextView;
+    TextView descriptionTextView;
     LocationManager locationManager;
     LocationListener locationListener;
     WifiManager wifiManager;
+    List<ca.dane.dmit.homewifi.LocationModel.Location> locationsList;
 
-    double currentLat, currentLong, homeLat, homeLong;
+    double currentLat, currentLong;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -59,8 +61,9 @@ public class WifiToggle extends AppCompatActivity {
         startActivity(addLocationIntent);
     }
 
-    public void deleteLocation(){
-        //call db and delete entry
+    public void viewMap(View view){
+        Intent viewMapIntent = new Intent(this, MapView.class);
+        startActivity(viewMapIntent);
     }
 
     @Override
@@ -68,24 +71,28 @@ public class WifiToggle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_toggle);
 
-        toggleButton = (Button) findViewById(R.id.wifiToggleButton);
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         ListView locationListView = (ListView) findViewById(R.id.locationListView);
+        descriptionTextView = (TextView) findViewById(R.id.locationNameTextView);
 
-        List<ca.dane.dmit.homewifi.LocationModel.Location> locations = new ArrayList<>();
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        final WifiInfo wifi = wifiManager.getConnectionInfo();
+
+        final List<ca.dane.dmit.homewifi.LocationModel.Location> locations = new ArrayList<>();
         LocationAdapter adapter = new LocationAdapter(this, locations);
         locationListView.setAdapter(adapter);
 
-        LocationDatabaseHelper dbHelper = new LocationDatabaseHelper(this);
-        Cursor cursor = dbHelper.findAllLocationsCursor();
+        final LocationDatabaseHelper dbHelper = new LocationDatabaseHelper(this);
+        final Cursor cursor = dbHelper.findAllLocationsCursor();
         String[] fromColumns = {
                 LocationContract.LocationEntry.COLUMN_NAME_DESCRIPTION,
                 LocationContract.LocationEntry.COLUMN_NAME_LAT,
-                LocationContract.LocationEntry.COLUMN_NAME_LONG
+                LocationContract.LocationEntry.COLUMN_NAME_LONG,
+                LocationContract.LocationEntry.COLUMN_NAME_ISACTIVE
         };
 
         int[] toViews = {R.id.locationNameTextView};
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(
+        final SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(
                 this,
                 R.layout.location_item,
                 cursor,
@@ -94,13 +101,32 @@ public class WifiToggle extends AppCompatActivity {
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
         );
 
+        locationsList = dbHelper.findAllLocations();
+
         locationListView.setAdapter(cursorAdapter);
+        locationListView.setItemsCanFocus(true);
+
 
 
         locationListener = new LocationListener() {
             @Override
-            public void onLocationChanged(Location location) {
+            public void onLocationChanged(android.location.Location location) {
+                if(wifi.getNetworkId() == -1){
+                    for(int i = 0; i < locationsList.size(); i++){
+                        ca.dane.dmit.homewifi.LocationModel.Location currentLocation = locationsList.get(i);
+                        if(currentLocation.isActive){
+                            if(currentLong == currentLocation.lng && currentLat == currentLocation.lat){
+                                wifiManager.setWifiEnabled(true);
+                            }
+                        }
 
+
+                    }
+                    if(wifiManager.isWifiEnabled() == true){
+                        wifiManager.setWifiEnabled(false);
+                    }
+
+                }
             }
 
             @Override
@@ -133,4 +159,5 @@ public class WifiToggle extends AppCompatActivity {
             currentLong = lastKnownLocation.getLongitude();
         }
     }
+
 }

@@ -3,4 +3,8 @@
     <string name="locationName">Location Name</string>
     <string name="delete">Delete</string>
     <string name="addNewLocation">Add New Location</string>
+    <string name="toggleOn">On</string>
+    <string name="toggleOff">Off</string>
+    <string name="title_activity_map_view">Map</string>
+    <string name="toMaps">View Map</string>
 </resources>

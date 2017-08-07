@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by super on 8/6/2017.
@@ -33,6 +37,27 @@ public class LocationDatabaseHelper extends SQLiteOpenHelper {
         db.insert(LocationContract.LocationEntry.TABLE_NAME, null, values);
     }
 
+    public List<Location> findAllLocations(){
+        SQLiteDatabase db = getReadableDatabase();
+        List<Location> locations = new ArrayList<Location>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + LocationContract.LocationEntry.TABLE_NAME, null);
+
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            Location currentLocation = new Location();
+
+            currentLocation.setLat(cursor.getDouble(cursor.getColumnIndex(LocationContract.LocationEntry.COLUMN_NAME_LAT)));
+            currentLocation.setLng(cursor.getDouble(cursor.getColumnIndex(LocationContract.LocationEntry.COLUMN_NAME_LONG)));
+            currentLocation.setDescription(cursor.getString(cursor.getColumnIndex(LocationContract.LocationEntry.COLUMN_NAME_DESCRIPTION)));
+            Boolean isActive = "1".equals(cursor.getString(cursor.getColumnIndex(LocationContract.LocationEntry.COLUMN_NAME_ISACTIVE)));
+            currentLocation.setActive(isActive);
+            String test = cursor.getString(cursor.getColumnIndex(LocationContract.LocationEntry.COLUMN_NAME_ISACTIVE));
+            locations.add(currentLocation);
+        }
+
+
+        return locations;
+    }
+
     public Cursor findAllLocationsCursor(){
         String[] projection = {
                 LocationContract.LocationEntry.COLUMN_NAME_ID,
@@ -41,6 +66,7 @@ public class LocationDatabaseHelper extends SQLiteOpenHelper {
                 LocationContract.LocationEntry.COLUMN_NAME_LAT,
                 LocationContract.LocationEntry.COLUMN_NAME_ISACTIVE
         };
+
         String sortBy = LocationContract.LocationEntry.COLUMN_NAME_DESCRIPTION + " DESC";
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(
